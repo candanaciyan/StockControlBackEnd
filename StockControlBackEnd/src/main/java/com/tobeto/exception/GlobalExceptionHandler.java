@@ -15,7 +15,7 @@ public class GlobalExceptionHandler {
 		log.error(ex);
 		GlobalExceptionDTO dto = new GlobalExceptionDTO();
 		dto.setCode(1001);
-		dto.setMesaj("Hata oluştu");
+		dto.setMessage("Hata oluştu");
 		return ResponseEntity.internalServerError().body(dto);
 	}
 	
