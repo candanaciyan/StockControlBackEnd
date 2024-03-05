@@ -13,18 +13,18 @@ public class V1_1_0__encrypt_password extends BaseJavaMigration {
 	public void migrate(Context context) throws Exception {
 		PasswordEncoder encoder = new BCryptPasswordEncoder();
 
-		try (PreparedStatement kullanicilar = context.getConnection()
-				.prepareStatement("select * from kullanicilar")) {
-			try (ResultSet kullanicilarRs = kullanicilar.executeQuery()) {
-				while (kullanicilarRs.next()) {
-					String clearPassword = kullanicilarRs.getString("sifre");
-					byte[] id = kullanicilarRs.getBytes("id");
+		try (PreparedStatement employee = context.getConnection()
+				.prepareStatement("select * from employee")) {
+			try (ResultSet employees = employee.executeQuery()) {
+				while (employees.next()) {
+					String clearPassword = employees.getString("password");
+					byte[] id = employees.getBytes("id");
 
-					try (PreparedStatement kullaniciSifreUpdate = context.getConnection()
-							.prepareStatement("update kullanicilar set sifre = ? where id = ?")) {
-						kullaniciSifreUpdate.setString(1, encoder.encode(clearPassword));
-						kullaniciSifreUpdate.setBytes(2, id);
-						kullaniciSifreUpdate.execute();
+					try (PreparedStatement employeePasswordUpdate = context.getConnection()
+							.prepareStatement("update employee set password = ? where id = ?")) {
+						employeePasswordUpdate.setString(1, encoder.encode(clearPassword));
+						employeePasswordUpdate.setBytes(2, id);
+						employeePasswordUpdate.execute();
 					}
 				}
 			}
