@@ -27,7 +27,7 @@ public class Role implements Serializable {
 	
 	@ManyToMany
 	@JoinTable(name = "employee_role", joinColumns = { @JoinColumn(name = "role_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "employe_id") })
+			@JoinColumn(name = "employee_id") })
 	private List<Employee> employees;
 
 	public UUID getId() {
@@ -54,9 +54,5 @@ public class Role implements Serializable {
 		this.employees = employees;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
 
 }

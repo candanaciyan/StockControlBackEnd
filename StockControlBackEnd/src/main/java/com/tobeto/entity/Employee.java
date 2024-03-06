@@ -31,36 +31,46 @@ public class Employee implements Serializable {
 	@ManyToMany(mappedBy = "roles")
 	private List<Role> roles;
 
-	
 
 	public UUID getId() {
 		return id;
 	}
 
+
 	public void setId(UUID id) {
 		this.id = id;
 	}
+
 
 	public String getEmployeeName() {
 		return employeeName;
 	}
 
+
 	public void setEmployeeName(String employeeName) {
 		this.employeeName = employeeName;
 	}
 
-	
+
 	public String getPassword() {
 		return password;
 	}
+
 
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+
+	public List<Role> getRoles() {
+		return roles;
 	}
+
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+
 	
 	
 }
